@@ -7,4 +7,21 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 // All your handlers here...
 app.get('/', (req, res) => {/*...*/})
+
+app.post('/info', async(req, res) => {
+    let body = req.body;
+
+    if(body) {
+        res.status(200).json({
+            data: body,
+            success: true
+        });
+    }
+    return res.status(400).json({
+        err: {
+            message: 'No se encontro nada en body'
+        }
+    });
+});
+
 app.post('/quotes', (req, res) => {/*...*/})
